@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <com.example.customview24112020.TitleWithIcon
+        android:id="@+id/titleWithIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:drawable_icon="@drawable/ic_circle_red"

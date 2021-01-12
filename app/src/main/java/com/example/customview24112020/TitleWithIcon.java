@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 public class TitleWithIcon extends RelativeLayout {
     private String mTextTitle = "";
     private int mDrawableImage;
+    private OnListenerClick mOnListenerClick;
 
     private TextView mTextView;
     private ImageView mImg;
@@ -40,7 +41,17 @@ public class TitleWithIcon extends RelativeLayout {
             mDrawableImage = typedArray.getResourceId(R.styleable.TitleWithIcon_drawable_icon,0);
             typedArray.recycle();
             mapview(view);
+            event();
         }
+    }
+
+    private void event() {
+        mImg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnListenerClick.onClickIcon();
+            }
+        });
     }
 
     private void mapview(View v) {
@@ -53,5 +64,8 @@ public class TitleWithIcon extends RelativeLayout {
             mTextView.setText(mTextTitle);
         }
         mImg.setImageResource(mDrawableImage);
+    }
+    public void setOnClickIcon(OnListenerClick onClickIcon){
+        mOnListenerClick = onClickIcon;
     }
 }
